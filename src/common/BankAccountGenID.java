@@ -43,10 +43,10 @@ public class BankAccountGenID {
             ResultSet rs2 = pre2.executeQuery();
             ResultSet rs3 = pre3.executeQuery();
             while (rs1.next()) {
-                lastBankAccount = rs1.getInt(2);
+                lastBankAccount = rs1.getInt(1);
             }
             while (rs2.next()) {
-                lastSavingAccount = rs2.getInt(2);
+                lastSavingAccount = rs2.getInt(1);
             }
             while (rs3.next()) {
                 lastCustomerId = rs3.getInt(1);
