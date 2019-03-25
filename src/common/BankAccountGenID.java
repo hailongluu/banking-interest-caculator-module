@@ -5,7 +5,6 @@
  */
 package common;
 
-import com.mysql.cj.protocol.Resultset;
 import connection.DBconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
