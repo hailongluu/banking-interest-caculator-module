@@ -10,5 +10,4 @@ package bank;
  * @author hailongluu
  */
 public class InterestCaculator {
-    
 }
