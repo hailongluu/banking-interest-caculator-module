@@ -20,13 +20,14 @@ public class InterestCaculator {
     public double caculateInterest(SavingAccount savingAccount, Date endDate){
         InterestRate interestRate = new InterestRate();
         long diff = endDate.getTime()-savingAccount.getDate().getTime();
-        int days = (int) diff/(1000*60*60*24);         //so ngay thuc gui tien tai ngan hang
+        long days = (long) diff/(1000*60*60*24);         //so ngay thuc gui tien tai ngan hang
+        System.out.println(diff/(1000*60*60*24));
         if (savingAccount.getTerm() == 0){          // ki han gui =0 -> gui khong lai suat
             return (days*savingAccount.getCash()*savingAccount.getInterestRate())/36000;
         }
         else if (savingAccount.getTerm() > 0){          // ki han gui >0 gui co lai xuat
             int dayterms = savingAccount.getTerm() * 30;  // so ngay trong 1 ki han
-            int loopTerm = days / dayterms ;              // so ki han da trai qua
+            long loopTerm = days / dayterms ;              // so ki han da trai qua
             if (loopTerm == 0){                             // chua trai qua duoc ki han nao
                 double rate = interestRate.getRateByMonth(savingAccount.getTerm(),savingAccount.getDate());  // rate tinh bang rate cua k ki han ngay gui
                 return (days*savingAccount.getCash()*rate)/36000; // tra ve so tien tinh nhu khong ki han

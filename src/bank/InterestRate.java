@@ -27,7 +27,7 @@ public class InterestRate {
     void getRate() {
         try {
             Connection connection = new DBconnection().getConnect();
-            String getRate = "SELECT * FROM banking.customer WHERE id = ? ;";
+            String getRate = "SELECT * FROM interestrate WHERE id = ? ;";
             PreparedStatement pre = connection.prepareStatement(getRate);
             pre.setInt(1, 1);
             ResultSet rs = pre.executeQuery();
@@ -90,7 +90,7 @@ public class InterestRate {
         String monthSearch = sdf.format(month);
         try {
             Connection connection = new DBconnection().getConnect();
-            String getRate = "SELECT * FROM banking.customer WHERE date = ? ;";
+            String getRate = "SELECT * FROM interestrate WHERE date = ? ;";
             PreparedStatement pre = connection.prepareStatement(getRate);
             pre.setString(1, monthSearch);
             ResultSet rs = pre.executeQuery();

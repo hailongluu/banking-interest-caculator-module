@@ -18,7 +18,8 @@ import java.util.Date;
  */
 public class TestCommon {
     public static void main(String[] args) throws SQLException {
-        testSavingDAO();
+//        testSavingDAO();
+        testCaculator();
     }
 
     static void testSavingDAO() {

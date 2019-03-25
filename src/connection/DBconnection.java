@@ -16,8 +16,8 @@ public class DBconnection {
     protected Connection openConnect() throws ClassNotFoundException, SQLException {
         if(connect == null){
             hasDriver();
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost/QLSTK?" +
-                    "user=root&password=");
+            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking?" +
+                    "user=root&password=111111");
         }
         return connect;
     }
