@@ -1,7 +1,6 @@
 package customer;
 
-import customer.Account;
-import customer.Person;
+import bank.Account;
 
 public class Customer {
 

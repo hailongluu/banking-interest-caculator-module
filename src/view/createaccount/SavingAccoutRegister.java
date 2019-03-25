@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.createaccount;
 
 /**
  *
@@ -37,7 +37,7 @@ public class SavingAccoutRegister extends javax.swing.JFrame {
 
         jLabel1.setText("Đăng kí mở tài khoản tiết kiệm");
 
-        jLabel2.setText("Nhập số tài khoản ");
+        jLabel2.setText("CMT khách hàng");
 
         txtSTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +58,7 @@ public class SavingAccoutRegister extends javax.swing.JFrame {
                 .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(jButton1)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         pnlSearchCustomerLayout.setVerticalGroup(
             pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

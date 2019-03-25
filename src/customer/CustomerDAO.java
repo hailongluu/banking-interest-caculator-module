@@ -1,40 +1,27 @@
 package customer;
 
-
-
 public class CustomerDAO {
 
-	/**
-	 * 
-	 */
-	Customer getCustomer(int id){
-                        return new Customer();
 
-        };
+    Customer getCustomer(int id) {
+        return null;
 
-	/**
-	 * 
-	 */
-	Customer getCustomerByAccount(int id){
-            return new Customer();
-        };
-	void addCustomer(Customer customer){
-            
-        };
+    }
 
-	/**
-	 * 
-	 */
-	void deleteCustomer(Customer customer){
-            
-        };
+    Customer getCustomerByAccount(int id) {
+        return null;
+    }
 
-	/**
-	 * 
-	 * @param Customer
-	 */
-	void updateCustomer(int Customer){
-            
-        };
+    ;
+    void addCustomer(Customer customer) {
 
+    }
+
+    void deleteCustomer(Customer customer) {
+    
+    }
+
+    void updateCustomer(int Customer) {
+
+    }
 }
