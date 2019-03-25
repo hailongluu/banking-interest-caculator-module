@@ -2,28 +2,39 @@ package customer;
 
 
 
-public interface CustomerDAO {
+public class CustomerDAO {
 
 	/**
 	 * 
 	 */
-	Customer getCustomer(int id);
+	Customer getCustomer(int id){
+                        return new Customer();
+
+        };
 
 	/**
 	 * 
 	 */
-	Customer getCustomerByAccount(int id);
-	void addCustomer(Customer customer);
+	Customer getCustomerByAccount(int id){
+            return new Customer();
+        };
+	void addCustomer(Customer customer){
+            
+        };
 
 	/**
 	 * 
 	 */
-	void deleteCustomer(Customer customer);
+	void deleteCustomer(Customer customer){
+            
+        };
 
 	/**
 	 * 
 	 * @param Customer
 	 */
-	void updateCustomer(int Customer);
+	void updateCustomer(int Customer){
+            
+        };
 
 }

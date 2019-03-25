@@ -4,14 +4,26 @@ public class Person {
 	private Account account;
 	public String fullName;
         public String address;
+        public String phoneNumber;
         String idCard;
 
-    public Person(Account account, String fullName, String address, String idCard) {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Person(Account account, String fullName, String address, String phoneNumber, String idCard) {
         this.account = account;
         this.fullName = fullName;
         this.address = address;
+        this.phoneNumber = phoneNumber;
         this.idCard = idCard;
     }
+
+   
 
     public String getIdCard() {
         return idCard;
