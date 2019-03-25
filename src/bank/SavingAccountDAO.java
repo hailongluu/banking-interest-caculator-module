@@ -75,7 +75,7 @@ public class SavingAccountDAO {
                         rs.getDouble(4),
                         rs.getInt(5),
                         rs.getString(7),
-                        new CustomerDAO().getCustomerByIdCard(rs.getInt(6)),
+                        new CustomerDAO().getCustomerByGeneratedId(rs.getInt(6)),
                         dtf.convertStringToDate(rs.getString(8)));
                 listSavingAccounts.add(savingAccount);
             }
@@ -101,7 +101,7 @@ public class SavingAccountDAO {
                         rs.getDouble(4),
                         rs.getInt(5),
                         rs.getString(7),
-                        new CustomerDAO().getCustomerByIdCard(rs.getInt(6)),
+                        new CustomerDAO().getCustomerByGeneratedId(rs.getInt(6)),
                         dtf.convertStringToDate(rs.getString(8)));
             }
             return savingAccount;
