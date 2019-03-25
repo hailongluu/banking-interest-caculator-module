@@ -6,7 +6,7 @@
 package bank;
 
 import customer.Customer;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -16,13 +16,13 @@ public class SavingAccount {
     int id;
     String number;
     double cash;
-    float interestRate;
+    double interestRate;
     int term;
     String kind;
     Customer customer;
     Date date;
 
-    public SavingAccount(int id, String number, double cash, float interestRate, int term, String kind, Customer customer, Date date) {
+    public SavingAccount(int id, double cash, double interestRate, int term, String kind, Customer customer, Date date) {
         
         this.id = id;
         this.number = autoGenNumber(id);
@@ -33,7 +33,17 @@ public class SavingAccount {
         this.customer = customer;
         this.date = date;
     }
+    public SavingAccount(int id, String number, double cash, double interestRate, int term, String kind, Customer customer, Date date) {
 
+        this.id = id;
+        this.number = number;
+        this.cash = cash;
+        this.interestRate = interestRate;
+        this.term = term;
+        this.kind = kind;
+        this.customer = customer;
+        this.date = date;
+    }
     public SavingAccount() {
     }
 
@@ -58,7 +68,7 @@ public class SavingAccount {
         return cash;
     }
 
-    public float getInterestRate() {
+    public double getInterestRate() {
         return interestRate;
     }
 

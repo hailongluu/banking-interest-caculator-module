@@ -24,11 +24,11 @@ public class BankAccountGenID {
     public int lastCustomerId;
     private boolean checked;
 
-    public BankAccountGenID() throws SQLException {
+    public BankAccountGenID()  {
         init();
     }
 
-    private void init() throws SQLException {
+    private void init()  {
         try {
             DBconnection dbConnection = new DBconnection();
             Connection connection = dbConnection.getConnect();
@@ -47,31 +47,26 @@ public class BankAccountGenID {
             checked = true;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BankAccountGenID.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public int getLastSavingAccount() {
-        return lastSavingAccount;
-    }
 
-    public int getLastCustomerId() {
-        return lastCustomerId;
-    }
-
-    public void setLastSavingAccount(int lastSavingAccount) {
-        this.lastSavingAccount = lastSavingAccount;
-    }
-
-    public void setLastCustomerId(int lastCustomerId) {
-        this.lastCustomerId = lastCustomerId;
-    }
-
-    public int getNewSavingAccount() throws SQLException {
+    public int getNewCustomerId() {
         if (checked == false) {
             init();
         }
         checked = false;
-        return lastSavingAccount++;
+        return lastCustomerId + 1;
+    }
+
+    public int getNewSavingAccountId()  {
+        if (checked == false) {
+            init();
+        }
+        checked = false;
+        return lastSavingAccount + 1;
     }
 
     @Override
