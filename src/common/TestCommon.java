@@ -29,7 +29,7 @@ public class TestCommon {
         BankAccountGenID bag = new BankAccountGenID();
         Customer customer = new Customer(1,null,"abc","abc","11111","11111");
         SavingAccount sa = new SavingAccount(bag.getNewSavingAccountId(),10000,8.7,2,"Deposite", customer,new Date());
-//        savingAccountDAO.addSavingAccount(sa);
+        savingAccountDAO.addSavingAccount(sa);
         SavingAccount hn000001 = savingAccountDAO.getSavingAccountByAccountNumber("HN000001");
         List<SavingAccount> savingAccountByIdCard = savingAccountDAO.getSavingAccountByIdCard("1234567890");
         System.out.println(hn000001);

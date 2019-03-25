@@ -41,7 +41,7 @@ public class SavingAccountDAO {
         DateTimeFomater dtf = new DateTimeFomater();
 
         try {
-            String addSavingAccount = "INSERT INTO savingaccount ( `number`, `cash`, `interestrate`, `term`, `idcustomer`, `kind`, `date`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+            String addSavingAccount = "INSERT INTO savingaccount ( `number`, `cash`, `interestrate`, `term`, `idcustomer`, `kind`, `date`, `iswithdrawned`) VALUES (?, ?, ?, ?, ?, ?, ?,?);";
             PreparedStatement pre = connection.prepareStatement(addSavingAccount);
             pre.setString(1, account.getNumber());
             pre.setDouble(2, account.getCash());
@@ -50,6 +50,8 @@ public class SavingAccountDAO {
             pre.setInt(5, account.getCustomer().getId());
             pre.setString(6, account.getKind());
             pre.setString(7, dtf.convertDateToString(account.getDate()));
+            pre.setInt(8, account.getIsWithdrawned());
+
             pre.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -67,7 +69,14 @@ public class SavingAccountDAO {
             pre.setString(1, idCard);
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
-                SavingAccount savingAccount = new SavingAccount(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getInt(5), rs.getString(7), new CustomerDAO().getCustomerByIdCard(rs.getInt(6)), dtf.convertStringToDate(rs.getString(8)));
+                SavingAccount savingAccount = new SavingAccount(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getDouble(3),
+                        rs.getDouble(4),
+                        rs.getInt(5),
+                        rs.getString(7),
+                        new CustomerDAO().getCustomerByIdCard(rs.getInt(6)),
+                        dtf.convertStringToDate(rs.getString(8)));
                 listSavingAccounts.add(savingAccount);
             }
             return listSavingAccounts;
@@ -86,7 +95,14 @@ public class SavingAccountDAO {
             pre.setString(1, number);
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
-                savingAccount = new SavingAccount(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getInt(5), rs.getString(7), new CustomerDAO().getCustomerByIdCard(rs.getInt(6)), dtf.convertStringToDate(rs.getString(8)));
+                savingAccount = new SavingAccount(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getDouble(3),
+                        rs.getDouble(4),
+                        rs.getInt(5),
+                        rs.getString(7),
+                        new CustomerDAO().getCustomerByIdCard(rs.getInt(6)),
+                        dtf.convertStringToDate(rs.getString(8)));
             }
             return savingAccount;
         } catch (SQLException ex) {

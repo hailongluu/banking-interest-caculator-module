@@ -32,12 +32,4 @@ public class DateTimeFomater {
         return null;
     }
 
-    public Date getDate(){
-        Date d = new Date(System.currentTimeMillis());
-        return convertStringToDate(sdf.format(d));
-    }
-    public String getDateString(){
-        Date d = new Date(System.currentTimeMillis());
-        return sdf.format(d);
-    }
 }

@@ -21,6 +21,7 @@ public class SavingAccount {
     String kind;
     Customer customer;
     Date date;
+    int isWithdrawned;
 
     public SavingAccount(int id, double cash, double interestRate, int term, String kind, Customer customer, Date date) {
         
@@ -32,7 +33,21 @@ public class SavingAccount {
         this.kind = kind;
         this.customer = customer;
         this.date = date;
+        this.isWithdrawned = 0;
     }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public void setIsWithdrawned(int isWithdrawned) {
+        this.isWithdrawned = isWithdrawned;
+    }
+
+    public int getIsWithdrawned() {
+        return isWithdrawned;
+    }
+//    khoi tao khi tao tk tiet kiem iswithdrawned = 0
     public SavingAccount(int id, String number, double cash, double interestRate, int term, String kind, Customer customer, Date date) {
 
         this.id = id;
@@ -43,6 +58,20 @@ public class SavingAccount {
         this.kind = kind;
         this.customer = customer;
         this.date = date;
+        this.isWithdrawned = 0;
+    }
+//    khoi tao khi lay ra tu csdl de check account da rut hay chua
+    public SavingAccount(int id, String number, double cash, double interestRate, int term, String kind, Customer customer, Date date,int isWithdrawned) {
+
+        this.id = id;
+        this.number = number;
+        this.cash = cash;
+        this.interestRate = interestRate;
+        this.term = term;
+        this.kind = kind;
+        this.customer = customer;
+        this.date = date;
+        this.isWithdrawned = isWithdrawned;
     }
     public SavingAccount() {
     }
