@@ -23,14 +23,18 @@ public class SavingAccount {
     Date date;
 
     public SavingAccount(int id, String number, double cash, float interestRate, int term, String kind, Customer customer, Date date) {
+        
         this.id = id;
-        this.number = number;
+        this.number = autoGenNumber(id);
         this.cash = cash;
         this.interestRate = interestRate;
         this.term = term;
         this.kind = kind;
         this.customer = customer;
         this.date = date;
+    }
+
+    public SavingAccount() {
     }
 
     public Date getDate() {
@@ -97,5 +101,8 @@ public class SavingAccount {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    
+    public String autoGenNumber(int id){
+        String numberFomartted = String.format("HN%06d", id);
+        return numberFomartted;
+    }
 }

@@ -3,25 +3,20 @@ package customer;
 public class CustomerDAO {
 
 
-    Customer getCustomer(int id) {
+    public Customer getCustomerByIdCard(int id) {
         return null;
 
     }
 
-    Customer getCustomerByAccount(int id) {
-        return null;
-    }
-
-    ;
-    void addCustomer(Customer customer) {
+    public void addCustomer(Customer customer) {
 
     }
 
-    void deleteCustomer(Customer customer) {
+    public void deleteCustomer(Customer customer) {
     
     }
 
-    void updateCustomer(int Customer) {
+    public void updateCustomer(int Customer) {
 
     }
 }
