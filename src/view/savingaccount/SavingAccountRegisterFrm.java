@@ -5,16 +5,18 @@
  */
 package view.savingaccount;
 
+import bank.SavingAccountDAO;
+
 /**
  *
  * @author hailo
  */
-public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
+public class SavingAccountRegisterFrm extends javax.swing.JFrame {
 
     /**
      * Creates new form SavingAccoutRegister
      */
-    public SavingAccoutRegisterFrm() {
+    public SavingAccountRegisterFrm() {
         initComponents();
     }
 
@@ -31,8 +33,8 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnlSearchCustomer = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtSTK = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtCardId = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtSTK1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -56,16 +58,16 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
 
         jLabel2.setText("ID Number");
 
-        txtSTK.addActionListener(new java.awt.event.ActionListener() {
+        txtCardId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSTKActionPerformed(evt);
+                txtCardIdActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -149,9 +151,9 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
                             .addComponent(txtSTK1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSTK2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
-                                .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCardId, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
+                                .addComponent(searchBtn)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
                         .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -174,7 +176,7 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        pnlSearchCustomerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
+        pnlSearchCustomerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton3, searchBtn});
 
         pnlSearchCustomerLayout.setVerticalGroup(
             pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,8 +185,8 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtCardId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -214,7 +216,7 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlSearchCustomerLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
+        pnlSearchCustomerLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, jButton3, searchBtn});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,13 +241,17 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSTKActionPerformed
+    private void txtCardIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCardIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSTKActionPerformed
+    }//GEN-LAST:event_txtCardIdActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        String idCard = txtCardId.getText();
+//        if (idCard.isEmpty())
+            
+//        SavingAccountDAO dao = new SavingAccountDAO();
+//        dao.getSavingAccountByIdCard();
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void txtSTK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSTK1ActionPerformed
         // TODO add your handling code here:
@@ -292,27 +298,28 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SavingAccoutRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SavingAccountRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SavingAccoutRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SavingAccountRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SavingAccoutRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SavingAccountRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SavingAccoutRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SavingAccountRegisterFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SavingAccoutRegisterFrm().setVisible(true);
+                new SavingAccountRegisterFrm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -327,7 +334,8 @@ public class SavingAccoutRegisterFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JPanel pnlSearchCustomer;
-    private javax.swing.JTextField txtSTK;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField txtCardId;
     private javax.swing.JTextField txtSTK1;
     private javax.swing.JTextField txtSTK2;
     private javax.swing.JTextField txtSTK3;

@@ -5,10 +5,13 @@
  */
 package controller.register.savingaccount;
 
+import view.savingaccount.SavingAccountRegisterFrm;
+
 /**
  *
  * @author ASUS
  */
 public class SavingAccountRegistrerController {
+    private SavingAccountRegisterFrm frm;
     
 }

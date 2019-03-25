@@ -78,9 +78,9 @@
                               <Component id="txtSTK1" min="-2" pref="227" max="-2" attributes="0"/>
                               <Component id="txtSTK2" min="-2" pref="227" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtSTK" min="-2" pref="227" max="-2" attributes="0"/>
+                                  <Component id="txtCardId" min="-2" pref="227" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton1" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="searchBtn" linkSize="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -120,8 +120,8 @@
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtSTK" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCardId" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchBtn" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -166,17 +166,17 @@
             <Property name="text" type="java.lang.String" value="ID Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtSTK">
+        <Component class="javax.swing.JTextField" name="txtCardId">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSTKActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCardIdActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="searchBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">

@@ -10,5 +10,4 @@ package controller.register.employee;
  * @author ASUS
  */
 public class EmployeeRegisterController {
-
 }
