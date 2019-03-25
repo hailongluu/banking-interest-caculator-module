@@ -5,15 +5,13 @@ import bank.Account;
 public class Customer {
 
     private int id;
-    private Account account;
     public String fullName;
     public String address;
     public String phoneNumber;
     String idCard;
 
-    public Customer(int id, Account account, String fullName, String address, String phoneNumber, String idCard) {
+    public Customer(int id, String fullName, String address, String phoneNumber, String idCard) {
         this.id = id;
-        this.account = account;
         this.fullName = fullName;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -44,10 +42,6 @@ public class Customer {
         return idCard;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -60,10 +54,6 @@ public class Customer {
         this.idCard = idCard;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
     public String getFullName() {
         return fullName;
     }
@@ -73,7 +63,7 @@ public class Customer {
     }
 @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", account=" + account + ", fullName=" + fullName + ", address=" + address + ", phoneNumber=" + phoneNumber + ", idCard=" + idCard + '}';
+        return "Customer{" + "id=" + id + ",fullName=" + fullName + ", address=" + address + ", phoneNumber=" + phoneNumber + ", idCard=" + idCard + '}';
     }
     
 }
