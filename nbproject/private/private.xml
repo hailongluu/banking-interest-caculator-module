@@ -13,14 +13,18 @@
             <file>file:/I:/gitproject/QLSTK/src/view/register/LoginFrm.java</file>
             <file>file:/I:/gitproject/QLSTK/src/bank/InterestCaculator.java</file>
             <file>file:/I:/gitproject/QLSTK/src/bank/InterestRate.java</file>
+            <file>file:/I:/gitproject/QLSTK/test/bank/InterestCaculatorTest.java</file>
             <file>file:/I:/gitproject/QLSTK/src/customer/CustomerDAO.java</file>
             <file>file:/I:/gitproject/QLSTK/src/bank/WithdrawnInvoice.java</file>
+            <file>file:/I:/gitproject/QLSTK/src/controller/register/savingaccount/SavingAccountRegistrerController.java</file>
             <file>file:/I:/gitproject/QLSTK/src/bank/SavingAccountDAO.java</file>
             <file>file:/I:/gitproject/QLSTK/src/customer/Customer.java</file>
             <file>file:/I:/gitproject/QLSTK/src/common/DateTimeFomater.java</file>
+            <file>file:/I:/gitproject/QLSTK/test/bank/SavingAccountDAOTest.java</file>
             <file>file:/I:/gitproject/QLSTK/src/common/BankAccountGenID.java</file>
             <file>file:/I:/gitproject/QLSTK/src/view/savingaccount/AccountWithdrawalFrm.java</file>
             <file>file:/I:/gitproject/QLSTK/src/bank/SavingAccount.java</file>
+            <file>file:/I:/gitproject/QLSTK/src/controller/register/employee/EmployeeRegisterController.java</file>
         </group>
     </open-files>
 </project-private>
