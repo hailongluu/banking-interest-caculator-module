@@ -56,7 +56,7 @@ public class InterestCaculatorTest {
      */
     @Test
     public void testCaculateInterest() { // in term có ngày dư
-        System.out.println("caculateInterest");
+        System.out.println("caculateInterest in term có ngày dư");
         SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000001");
         Date endDate = dateTimeFomater.convertStringToDate("2019-04-01");
         InterestCaculator instance = new InterestCaculator();
@@ -67,7 +67,7 @@ public class InterestCaculatorTest {
 
     @Test
     public void testCaculateInterest1() { // in term không có ngày dư
-        System.out.println("caculateInterest");
+        System.out.println("caculateInterest in term không có ngày dư");
         SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000001");
         Date endDate = dateTimeFomater.convertStringToDate("2019-03-20");
         InterestCaculator instance = new InterestCaculator();
@@ -78,7 +78,7 @@ public class InterestCaculatorTest {
 
     @Test
     public void testCaculateInterest2() { // in term = 0
-        System.out.println("caculateInterest");
+        System.out.println("caculateInterest in term = 0");
         SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000002");
         Date endDate = dateTimeFomater.convertStringToDate("2019-04-01");
         InterestCaculator instance = new InterestCaculator();
@@ -89,7 +89,7 @@ public class InterestCaculatorTest {
 
     @Test
     public void testCaculateInterest3() { // in term > 0 chưa đủ kì hạn
-        System.out.println("caculateInterest");
+        System.out.println("caculateInterest in term > 0 chưa đủ kì hạn");
         SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000003");
         Date endDate = dateTimeFomater.convertStringToDate("2019-04-01");
         InterestCaculator instance = new InterestCaculator();
@@ -100,7 +100,7 @@ public class InterestCaculatorTest {
 
     @Test
     public void testCaculateInterest4() { // in term > 0 đạt kì hạn >=2 lần không có ngày dư
-        System.out.println("caculateInterest");
+        System.out.println("caculateInterest in term > 0 đạt kì hạn >=2 lần không có ngày dư");
         SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000004");
         Date endDate = dateTimeFomater.convertStringToDate("2019-03-20");
         InterestCaculator instance = new InterestCaculator();
@@ -111,7 +111,7 @@ public class InterestCaculatorTest {
 
     @Test
     public void testCaculateInterest5() { // in term > 0 đạt kì hạn >=2 lần có ngày dư
-        System.out.println("caculateInterest");
+        System.out.println("caculateInterest in term > 0 đạt kì hạn >=2 lần có ngày dư");
         SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000004");
         Date endDate = dateTimeFomater.convertStringToDate("2019-04-01");
         InterestCaculator instance = new InterestCaculator();
@@ -122,7 +122,7 @@ public class InterestCaculatorTest {
 
     @Test
     public void testCaculateInterest6() { // test vừa lập vừa rút luôn
-        System.out.println("caculateInterest");
+        System.out.println("caculateInterest test vừa lập vừa rút luôn");
         SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000001");
         Date endDate = dateTimeFomater.convertStringToDate("2018-03-25");
         InterestCaculator instance = new InterestCaculator();
