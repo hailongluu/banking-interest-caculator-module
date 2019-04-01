@@ -19,7 +19,7 @@ public class CustomerDAO {
     
     public Customer getCustomerByGeneratedId(int id) {
         try {
-            String query = "SELECT * FROM account WHERE id = ?";
+            String query = "SELECT * FROM customer WHERE id = ?";
             PreparedStatement sttm = connection.prepareStatement(query);
             sttm.setInt(1, id);
             ResultSet rs = sttm.executeQuery();
@@ -35,7 +35,7 @@ public class CustomerDAO {
 
     public Customer getCustomerByIdCard(String cardId) {
         try {
-            String query = "SELECT * FROM account WHERE idcard = ?";
+            String query = "SELECT * FROM customer WHERE idcard = ?";
             PreparedStatement sttm = connection.prepareStatement(query);
             sttm.setString(1, cardId);
             ResultSet rs = sttm.executeQuery();

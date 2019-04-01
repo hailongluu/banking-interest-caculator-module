@@ -34,7 +34,7 @@ public class SavingAccountDAO {
         DateTimeFomater dtf = new DateTimeFomater();
 
         try {
-            String addSavingAccount = "INSERT INTO savingaccount ( `number`, `cash`, `interestrate`, `term`, `idcustomer`, `kind`, `date`, `iswithdrawned`) VALUES (?, ?, ?, ?, ?, ?, ?,?);";
+            String addSavingAccount = "INSERT INTO savingaccount ( `number`, `cash`, `interestrate`, `term`, `idcustomer`, `kind`, `date`, `iswithdrawned`,`id`) VALUES (?, ?, ?, ?, ?, ?, ?,?,?);";
             PreparedStatement pre = connection.prepareStatement(addSavingAccount);
             pre.setString(1, account.getNumber());
             pre.setDouble(2, account.getCash());
@@ -44,7 +44,7 @@ public class SavingAccountDAO {
             pre.setString(6, account.getKind());
             pre.setString(7, dtf.convertDateToString(account.getDate()));
             pre.setInt(8, account.getIsWithdrawned());
-
+            pre.setInt(9,account.getId());
             pre.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -69,7 +69,8 @@ public class SavingAccountDAO {
                         rs.getInt(5),
                         rs.getString(7),
                         new CustomerDAO(connection).getCustomerByGeneratedId(rs.getInt(6)),
-                        dtf.convertStringToDate(rs.getString(8)));
+                        dtf.convertStringToDate(rs.getString(8)),
+                        rs.getInt(9));
                 listSavingAccounts.add(savingAccount);
             }
             return listSavingAccounts;
@@ -95,7 +96,8 @@ public class SavingAccountDAO {
                         rs.getInt(5),
                         rs.getString(7),
                         new CustomerDAO(connection).getCustomerByGeneratedId(rs.getInt(6)),
-                        dtf.convertStringToDate(rs.getString(8)));
+                        dtf.convertStringToDate(rs.getString(8)),
+                        rs.getInt(9));
             }
             return savingAccount;
         } catch (SQLException ex) {
