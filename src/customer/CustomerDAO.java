@@ -13,15 +13,8 @@ public class CustomerDAO {
     
     private Connection connection;
 
-    public CustomerDAO() {
-        try {
-            DBconnection dbConnection = new DBconnection();
-            this.connection = dbConnection.getConnect();
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public CustomerDAO(Connection connection) {
+        this.connection = connection;
     }
     
     public Customer getCustomerByGeneratedId(int id) {

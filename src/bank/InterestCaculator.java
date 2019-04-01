@@ -29,7 +29,7 @@ public class InterestCaculator {
             int dayterms = savingAccount.getTerm() * 30;  // so ngay trong 1 ki han
             long loopTerm = days / dayterms ;              // so ki han da trai qua
             if (loopTerm == 0){                             // chua trai qua duoc ki han nao
-                double rate = interestRate.getRateByMonth(savingAccount.getTerm(),savingAccount.getDate());  // rate tinh bang rate cua k ki han ngay gui
+                double rate = interestRate.getRateByMonth(0,savingAccount.getDate());  // rate tinh bang rate cua k ki han ngay gui
                 return (days*savingAccount.getCash()*rate)/36000; // tra ve so tien tinh nhu khong ki han
             }
             else if (loopTerm > 0){                 // trai qua nhieu hon 1 ki han
@@ -39,7 +39,7 @@ public class InterestCaculator {
                 double rate = savingAccount.getInterestRate(); //rate cua ki han dau tien
                 for (int i = 1 ; i <= loopTerm ;i++){      // lap qua cac ki han
                     if (i>=2){     // neu ki han lon hon 2 thi cap nhap cac thong so nhu ngay bat dau ki han moi va tinh lai rate cua ki han do
-                        Date newDate = new Date(startDate.getTime()+dayterms*24*60*60*1000);  // ngay bat dau moi
+                        Date newDate = new Date(startDate.getTime()+(long) dayterms*24*60*60*1000);  // ngay bat dau moi
                         rate = interestRate.getRateByMonth(savingAccount.getTerm(),newDate); // rate cua ki han moi
                         startDate = newDate; // cap nhat ngay bat dau ki han moi
                     }
@@ -47,11 +47,11 @@ public class InterestCaculator {
                     cash += interest;   // cong lai vao goc
                 }
                 if(days%dayterms > 0){   // so ngay vuot qua ki han tinh nhu ls khong ki han
-                    Date newDate = new Date(startDate.getTime()+dayterms*24*60*60*1000);  // ngay bat dau moi
+                    Date newDate = new Date(startDate.getTime()+(long) dayterms*24*60*60*1000);  // ngay bat dau moi
                     rate = interestRate.getRateByMonth(0,newDate); // rate cua ki han moi tinh la khong ki han
                     cash += cash*rate*(days%dayterms)/36000;
                 }
-                return  cash - savingAccount.getCash();
+                return  Math.round(cash - savingAccount.getCash());
             }
             else {
                 System.out.println("gia tri cua loop term nho hon 0");
@@ -61,5 +61,11 @@ public class InterestCaculator {
             System.out.println("gia tri cua term nho hon 0");
         }
          return 0;
+    }
+    double getNoTermInterest(){
+        return 0;
+    }
+    double getTermInterest(){
+        return 0;
     }
 }

@@ -23,10 +23,10 @@ public class TestCommon {
     }
 
     static void testSavingDAO() {
-        DateTimeFomater dtf = new DateTimeFomater();
-        SavingAccountDAO savingAccountDAO = new SavingAccountDAO();
-        BankAccountGenID bag = new BankAccountGenID();
-        CustomerDAO cusDAO = new CustomerDAO();
+//        DateTimeFomater dtf = new DateTimeFomater();
+//        SavingAccountDAO savingAccountDAO = new SavingAccountDAO();
+//        BankAccountGenID bag = new BankAccountGenID();
+//        CustomerDAO cusDAO = new CustomerDAO();
 //        cusDAO.getCustomerByIdCard("001097001906");
 //        Customer customer = new Customer(1,null,"abc","abc","11111","11111");
 //        SavingAccount sa = new SavingAccount(bag.getNewSavingAccountId(),10000,8.7,2,"Deposite", customer,new Date());
@@ -37,14 +37,14 @@ public class TestCommon {
 //        System.out.println(savingAccountByIdCard);
     }
     static void testCaculator(){
-        DateTimeFomater dtf = new DateTimeFomater();
-        SavingAccountDAO savingAccountDAO = new SavingAccountDAO();
-        InterestCaculator interestCaculator = new InterestCaculator();
-        BankAccountGenID bag = new BankAccountGenID();
-        Customer customer = new Customer(1,"abc","abc","11111","11111");
-        SavingAccount sa = new SavingAccount(bag.getNewSavingAccountId(),100000000,5.5,2,"Deposite", customer,dtf.convertStringToDate("2018-03-01"));
-        double interest = interestCaculator.caculateInterest(sa,dtf.convertStringToDate("2018-05-07") );
-        double interest2 = interestCaculator.caculateInterest(sa,dtf.convertStringToDate("2018-10-10") );
-        System.out.println(interest+"   "+interest2);
+//        DateTimeFomater dtf = new DateTimeFomater();
+//        SavingAccountDAO savingAccountDAO = new SavingAccountDAO();
+//        InterestCaculator interestCaculator = new InterestCaculator();
+//        BankAccountGenID bag = new BankAccountGenID();
+//        Customer customer = new Customer(1,"abc","abc","11111","11111");
+//        SavingAccount sa = new SavingAccount(bag.getNewSavingAccountId(),100000000,5.5,2,"Deposite", customer,dtf.convertStringToDate("2018-03-01"));
+//        double interest = interestCaculator.caculateInterest(sa,dtf.convertStringToDate("2018-05-07") );
+//        double interest2 = interestCaculator.caculateInterest(sa,dtf.convertStringToDate("2018-10-10") );
+//        System.out.println(interest+"   "+interest2);
     }
 }

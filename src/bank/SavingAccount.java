@@ -7,6 +7,7 @@ package bank;
 
 import customer.Customer;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -144,4 +145,62 @@ public class SavingAccount {
         String numberFomartted = String.format("HN%06d", id);
         return numberFomartted;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.id;
+        hash = 53 * hash + Objects.hashCode(this.number);
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.cash) ^ (Double.doubleToLongBits(this.cash) >>> 32));
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.interestRate) ^ (Double.doubleToLongBits(this.interestRate) >>> 32));
+        hash = 53 * hash + this.term;
+        hash = 53 * hash + Objects.hashCode(this.kind);
+        hash = 53 * hash + Objects.hashCode(this.customer);
+        hash = 53 * hash + Objects.hashCode(this.date);
+        hash = 53 * hash + this.isWithdrawned;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SavingAccount other = (SavingAccount) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.cash) != Double.doubleToLongBits(other.cash)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.interestRate) != Double.doubleToLongBits(other.interestRate)) {
+            return false;
+        }
+        if (this.term != other.term) {
+            return false;
+        }
+        if (this.isWithdrawned != other.isWithdrawned) {
+            return false;
+        }
+        if (!Objects.equals(this.number, other.number)) {
+            return false;
+        }
+        if (!Objects.equals(this.kind, other.kind)) {
+            return false;
+        }
+        if (!Objects.equals(this.customer, other.customer)) {
+            return false;
+        }
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

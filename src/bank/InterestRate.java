@@ -87,6 +87,7 @@ public class InterestRate {
 
     public double getRateByMonth(int term, Date month) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+
         String monthSearch = sdf.format(month);
         try {
             Connection connection = new DBconnection().getConnect();
@@ -124,6 +125,12 @@ public class InterestRate {
                     col = 6;
                     break;
                 case 9:
+                    col = 7;
+                    break;
+                case 10:
+                    col = 7;
+                    break;
+                case 11:
                     col = 7;
                     break;
                 case 12:

@@ -26,15 +26,8 @@ public class SavingAccountDAO {
 
     private Connection connection;
 
-    public SavingAccountDAO() {
-        try {
-            DBconnection dbConnection = new DBconnection();
-            this.connection = dbConnection.getConnect();
-        } catch (SQLException ex) {
-            Logger.getLogger(SavingAccountDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SavingAccountDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public SavingAccountDAO(Connection connection) {
+        this.connection = connection;
     }
 
     public boolean addSavingAccount(SavingAccount account) {
@@ -75,7 +68,7 @@ public class SavingAccountDAO {
                         rs.getDouble(4),
                         rs.getInt(5),
                         rs.getString(7),
-                        new CustomerDAO().getCustomerByGeneratedId(rs.getInt(6)),
+                        new CustomerDAO(connection).getCustomerByGeneratedId(rs.getInt(6)),
                         dtf.convertStringToDate(rs.getString(8)));
                 listSavingAccounts.add(savingAccount);
             }
@@ -101,7 +94,7 @@ public class SavingAccountDAO {
                         rs.getDouble(4),
                         rs.getInt(5),
                         rs.getString(7),
-                        new CustomerDAO().getCustomerByGeneratedId(rs.getInt(6)),
+                        new CustomerDAO(connection).getCustomerByGeneratedId(rs.getInt(6)),
                         dtf.convertStringToDate(rs.getString(8)));
             }
             return savingAccount;

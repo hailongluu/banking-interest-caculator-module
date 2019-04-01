@@ -73,6 +73,15 @@ public class LoginFrm extends javax.swing.JFrame {
         pnlSearchCustomer.setLayout(pnlSearchCustomerLayout);
         pnlSearchCustomerLayout.setHorizontalGroup(
             pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
+                .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel10))
+                    .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
+                        .addGap(299, 299, 299)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchCustomerLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,15 +92,6 @@ public class LoginFrm extends javax.swing.JFrame {
                     .addComponent(txtSTK6, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(203, 203, 203))
-            .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
-                .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel10))
-                    .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
-                        .addGap(299, 299, 299)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pnlSearchCustomerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtSTK, txtSTK6});

@@ -1,6 +1,7 @@
 package customer;
 
 import bank.Account;
+import java.util.Objects;
 
 public class Customer {
 
@@ -65,5 +66,44 @@ public class Customer {
     public String toString() {
         return "Customer{" + "id=" + id + ",fullName=" + fullName + ", address=" + address + ", phoneNumber=" + phoneNumber + ", idCard=" + idCard + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + Objects.hashCode(this.fullName);
+        hash = 97 * hash + Objects.hashCode(this.phoneNumber);
+        hash = 97 * hash + Objects.hashCode(this.idCard);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Customer other = (Customer) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.fullName, other.fullName)) {
+            return false;
+        }
+        if (!Objects.equals(this.phoneNumber, other.phoneNumber)) {
+            return false;
+        }
+        if (!Objects.equals(this.idCard, other.idCard)) {
+            return false;
+        }
+        return true;
+    }
+
+    
     
 }
