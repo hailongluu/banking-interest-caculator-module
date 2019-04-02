@@ -213,6 +213,10 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         }
         
     }
+    public int getNumberOfTableElement(){
+        DefaultTableModel model = (DefaultTableModel) tblListAccount.getModel();
+        return model.getRowCount();
+    }
     private void btnWithdrawnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnWithdrawnActionPerformed
