@@ -13,6 +13,7 @@
     <orderEntry type="library" name="mysql-connector-java-8.0.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:7.0.0-beta3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.72" level="project" />
+    <orderEntry type="library" name="client-combined-3.141.59-sources" level="project" />
+    <orderEntry type="library" name="client-combined-3.141.59" level="project" />
   </component>
 </module>

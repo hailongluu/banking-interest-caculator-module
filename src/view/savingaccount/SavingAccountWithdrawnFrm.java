@@ -5,6 +5,17 @@
  */
 package view.savingaccount;
 
+import bank.SavingAccount;
+import bank.SavingAccountDAO;
+import common.DateTimeFomater;
+import connection.DBconnection;
+import customer.Customer;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import view.register.*;
 import view.savingaccount.*;
 
@@ -17,10 +28,22 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
     /**
      * Creates new form SavingAccoutRegister
      */
+    List<SavingAccount> listAccount;
+    Customer customer;
+    SavingAccountDAO savingAccountDAO;
     public SavingAccountWithdrawnFrm() {
         initComponents();
+        init();
     }
-
+    void init(){
+        try {
+            savingAccountDAO = new SavingAccountDAO(new DBconnection().getConnect());
+        } catch (SQLException ex) {
+            Logger.getLogger(SavingAccountWithdrawnFrm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SavingAccountWithdrawnFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,12 +57,12 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnlSearchCustomer = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtSTK = new javax.swing.JTextField();
+        txtIDCard = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        tblListAccount = new javax.swing.JTable();
+        btnWithdrawn = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,37 +70,37 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Account Search Interface");
 
-        jLabel2.setText("Please enter ID number");
+        jLabel2.setText("Please enter ID Card");
 
-        txtSTK.addActionListener(new java.awt.event.ActionListener() {
+        txtIDCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSTKActionPerformed(evt);
+                txtIDCardActionPerformed(evt);
             }
         });
 
         jLabel10.setText("________________________________________________________________________________________");
 
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListAccount.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "number", "date", "term"
+                "id", "number", "cash", "date", "term"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblListAccount);
 
-        jButton2.setText("Details");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnWithdrawn.setText("Details");
+        btnWithdrawn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnWithdrawnActionPerformed(evt);
             }
         });
 
@@ -98,9 +121,9 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIDCard, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jLabel10)
@@ -111,7 +134,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
                 .addGap(539, 539, 539)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnWithdrawn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -123,13 +146,13 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtIDCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnWithdrawn)
                     .addComponent(jButton3))
                 .addGap(57, 57, 57))
         );
@@ -157,17 +180,42 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSTKActionPerformed
+    private void txtIDCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDCardActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSTKActionPerformed
+    }//GEN-LAST:event_txtIDCardActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(txtIDCard.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Nhập vào TD card của Khách hàng");
+            return;
+        }
+        String idCard = txtIDCard.getText();
+        listAccount = savingAccountDAO.getSavingAccountByIdCard(idCard);
+        
+        updateTable();
+    }//GEN-LAST:event_btnSearchActionPerformed
+    private void updateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblListAccount.getModel();
+        int rowcounts = model.getRowCount();
+        int id = 1;
+        for (int i = 0; i < rowcounts; i++) {
+            model.removeRow(0);
+        }
+        for (SavingAccount savingAccount : listAccount) {
+            model.addRow(new Object[]{
+                    id,
+                    savingAccount.getNumber(),
+                    DateTimeFomater.convertDateToString(savingAccount.getDate()),
+                    
+            });
+            id++;
+        }
+        
+    }
+    private void btnWithdrawnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnWithdrawnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -224,16 +272,16 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnWithdrawn;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnlSearchCustomer;
-    private javax.swing.JTextField txtSTK;
+    private javax.swing.JTable tblListAccount;
+    private javax.swing.JTextField txtIDCard;
     // End of variables declaration//GEN-END:variables
 }

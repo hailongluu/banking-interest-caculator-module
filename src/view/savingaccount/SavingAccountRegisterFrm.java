@@ -16,6 +16,7 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
     /**
      * Creates new form SavingAccoutRegister
      */
+    
     public SavingAccountRegisterFrm() {
         initComponents();
     }
@@ -233,9 +234,9 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
