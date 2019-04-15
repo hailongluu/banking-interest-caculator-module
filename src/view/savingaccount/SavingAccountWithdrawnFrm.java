@@ -31,11 +31,14 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
     List<SavingAccount> listAccount;
     Customer customer;
     SavingAccountDAO savingAccountDAO;
+
     public SavingAccountWithdrawnFrm() {
         initComponents();
         init();
+        setVisible(true);
     }
-    void init(){
+
+    void init() {
         try {
             savingAccountDAO = new SavingAccountDAO(new DBconnection().getConnect());
         } catch (SQLException ex) {
@@ -44,6 +47,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
             Logger.getLogger(SavingAccountWithdrawnFrm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -186,16 +190,16 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        if(txtIDCard.getText().equals("")){
+        if (txtIDCard.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Nhập vào TD card của Khách hàng");
             return;
         }
         String idCard = txtIDCard.getText();
         listAccount = savingAccountDAO.getSavingAccountByIdCard(idCard);
-        
+
         updateTable();
     }//GEN-LAST:event_btnSearchActionPerformed
-    private void updateTable(){
+    private void updateTable() {
         DefaultTableModel model = (DefaultTableModel) tblListAccount.getModel();
         int rowcounts = model.getRowCount();
         int id = 1;
@@ -204,16 +208,18 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         }
         for (SavingAccount savingAccount : listAccount) {
             model.addRow(new Object[]{
-                    id,
-                    savingAccount.getNumber(),
-                    DateTimeFomater.convertDateToString(savingAccount.getDate()),
-                    
+                id,
+                savingAccount.getNumber(),
+                savingAccount.getCash(),
+                DateTimeFomater.convertDateToString(savingAccount.getDate()),
+                savingAccount.getTerm()
             });
             id++;
         }
-        
+
     }
-    public int getNumberOfTableElement(){
+
+    public int getNumberOfTableElement() {
         DefaultTableModel model = (DefaultTableModel) tblListAccount.getModel();
         return model.getRowCount();
     }
