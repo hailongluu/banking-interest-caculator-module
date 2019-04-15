@@ -60,196 +60,25 @@ public class InterestCaculatorTest {
      */
     @Test
     public void testCaculateInterest1() {
-        int rowNum = 1;
-        Map<Integer, String> testData;
-        testData = interestTestDataCollector.getData(rowNum);
-        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-        Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
-        InterestCaculator instance = new InterestCaculator();
-        double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
-        double result = (long) instance.caculateInterest(savingAccount, endDate);
-        String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
-        System.out.println(testNote);
-        if (result == expResult) {
-            interestTestDataCollector.addResult(rowNum, result, "yes");
-        } else interestTestDataCollector.addResult(rowNum, result, "no");
 
-        assertEquals(expResult, result, 0.0);
+        for (int i = 1; i <= 75; i++) {
+            int rowNum = i;
+            Map<Integer, String> testData;
+            testData = interestTestDataCollector.getData(rowNum);
+            SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
+            Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
+            InterestCaculator instance = new InterestCaculator();
+            double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
+            double result = (long) instance.caculateInterest(savingAccount, endDate);
+            String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
+            System.out.println(testNote);
+            if (result == expResult) {
+                interestTestDataCollector.addResult(rowNum, result, "yes");
+            } else interestTestDataCollector.addResult(rowNum, result, "no");
 
+//            assertEquals(expResult, result, 0.0);
+        }
     }
-    @Test
-    public void testCaculateInterest2() {
-        int rowNum = 2;
-        Map<Integer, String> testData;
-        testData = interestTestDataCollector.getData(rowNum);
-        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-        Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
-        InterestCaculator instance = new InterestCaculator();
-        double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
-        double result = (long) instance.caculateInterest(savingAccount, endDate);
-        String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
-        System.out.println(testNote);
-        if (result == expResult) {
-            interestTestDataCollector.addResult(rowNum, result, "yes");
-        } else interestTestDataCollector.addResult(rowNum, result, "no");
 
-        assertEquals(expResult, result, 0.0);
 
-    }@Test
-    public void testCaculateInterest3() {
-        int rowNum = 3;
-        Map<Integer, String> testData;
-        testData = interestTestDataCollector.getData(rowNum);
-        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-        Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
-        InterestCaculator instance = new InterestCaculator();
-        double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
-        double result = (long) instance.caculateInterest(savingAccount, endDate);
-        String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
-        System.out.println(testNote);
-        if (result == expResult) {
-            interestTestDataCollector.addResult(rowNum, result, "yes");
-        } else interestTestDataCollector.addResult(rowNum, result, "no");
-
-        assertEquals(expResult, result, 0.0);
-
-    }@Test
-    public void testCaculateInterest4() {
-        int rowNum = 4;
-        Map<Integer, String> testData;
-        testData = interestTestDataCollector.getData(rowNum);
-        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-        Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
-        InterestCaculator instance = new InterestCaculator();
-        double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
-        double result = (long) instance.caculateInterest(savingAccount, endDate);
-        String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
-        System.out.println(testNote);
-        if (result == expResult) {
-            interestTestDataCollector.addResult(rowNum, result, "yes");
-        } else interestTestDataCollector.addResult(rowNum, result, "no");
-
-        assertEquals(expResult, result, 0.0);
-
-    }@Test
-    public void testCaculateInterest5() {
-        int rowNum = 5;
-        Map<Integer, String> testData;
-        testData = interestTestDataCollector.getData(rowNum);
-        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-        Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
-        InterestCaculator instance = new InterestCaculator();
-        double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
-        double result = (long) instance.caculateInterest(savingAccount, endDate);
-        String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
-        System.out.println(testNote);
-        if (result == expResult) {
-            interestTestDataCollector.addResult(rowNum, result, "yes");
-        } else interestTestDataCollector.addResult(rowNum, result, "no");
-
-        assertEquals(expResult, result, 0.0);
-
-    }@Test
-    public void testCaculateInterest6() {
-        int rowNum = 6;
-        Map<Integer, String> testData;
-        testData = interestTestDataCollector.getData(rowNum);
-        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-        Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
-        InterestCaculator instance = new InterestCaculator();
-        double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
-        double result = (long) instance.caculateInterest(savingAccount, endDate);
-        String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
-        System.out.println(testNote);
-        if (result == expResult) {
-            interestTestDataCollector.addResult(rowNum, result, "yes");
-        } else interestTestDataCollector.addResult(rowNum, result, "no");
-
-        assertEquals(expResult, result, 0.0);
-
-    }@Test
-    public void testCaculateInterest7() {
-        int rowNum = 7;
-        Map<Integer, String> testData;
-        testData = interestTestDataCollector.getData(rowNum);
-        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-        Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
-        InterestCaculator instance = new InterestCaculator();
-        double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
-        double result = (long) instance.caculateInterest(savingAccount, endDate);
-        String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
-        System.out.println(testNote);
-        if (result == expResult) {
-            interestTestDataCollector.addResult(rowNum, result, "yes");
-        } else interestTestDataCollector.addResult(rowNum, result, "no");
-
-        assertEquals(expResult, result, 0.0);
-
-    }
-//
-//    @Test
-//    public void testCaculateInterest1() { // in term không có ngày dư
-//        System.out.println("caculateInterest in term không có ngày dư");
-//        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000001");
-//        Date endDate = dateTimeFomater.convertStringToDate("2019-03-20");
-//        InterestCaculator instance = new InterestCaculator();
-//        double expResult = 8000000;
-//        double result = (long) instance.caculateInterest(savingAccount, endDate);
-//        assertEquals(expResult, result, 0.0);
-//    }
-//
-//    @Test
-//    public void testCaculateInterest2() { // in term = 0
-//        System.out.println("caculateInterest in term = 0");
-//        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000002");
-//        Date endDate = dateTimeFomater.convertStringToDate("2019-04-01");
-//        InterestCaculator instance = new InterestCaculator();
-//        double expResult = 1033333;
-//        double result = (long) instance.caculateInterest(savingAccount, endDate);
-//        assertEquals(expResult, result, 0.0);
-//    }
-//
-//    @Test
-//    public void testCaculateInterest3() { // in term > 0 chưa đủ kì hạn
-//        System.out.println("caculateInterest in term > 0 chưa đủ kì hạn");
-//        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000003");
-//        Date endDate = dateTimeFomater.convertStringToDate("2019-04-01");
-//        InterestCaculator instance = new InterestCaculator();
-//        double expResult = 1033333;
-//        double result = (long) instance.caculateInterest(savingAccount, endDate);
-//        assertEquals(expResult, result, 0.0);
-//    }
-//
-//    @Test
-//    public void testCaculateInterest4() { // in term > 0 đạt kì hạn >=2 lần không có ngày dư
-//        System.out.println("caculateInterest in term > 0 đạt kì hạn >=2 lần không có ngày dư");
-//        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000004");
-//        Date endDate = dateTimeFomater.convertStringToDate("2019-03-20");
-//        InterestCaculator instance = new InterestCaculator();
-//        double expResult = 7744400;
-//        double result = (long) instance.caculateInterest(savingAccount, endDate);
-//        assertEquals(expResult, result, 0.0);
-//    }
-//
-//    @Test
-//    public void testCaculateInterest5() { // in term > 0 đạt kì hạn >=2 lần có ngày dư
-//        System.out.println("caculateInterest in term > 0 đạt kì hạn >=2 lần có ngày dư");
-//        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000004");
-//        Date endDate = dateTimeFomater.convertStringToDate("2019-04-01");
-//        InterestCaculator instance = new InterestCaculator();
-//        double expResult = 7780315;
-//        double result = (long) instance.caculateInterest(savingAccount, endDate);
-//        assertEquals(expResult, result, 0.0);
-//    }
-//
-//    @Test
-//    public void testCaculateInterest6() { // test vừa lập vừa rút luôn
-//        System.out.println("caculateInterest test vừa lập vừa rút luôn");
-//        SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber("HN000001");
-//        Date endDate = dateTimeFomater.convertStringToDate("2018-03-25");
-//        InterestCaculator instance = new InterestCaculator();
-//        double expResult = 0;
-//        double result = (long) instance.caculateInterest(savingAccount, endDate);
-//        assertEquals(expResult, result, 0.0);
-//    }
 }

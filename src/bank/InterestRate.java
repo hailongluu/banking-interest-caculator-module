@@ -95,7 +95,7 @@ public class InterestRate {
             PreparedStatement pre = connection.prepareStatement(getRate);
             pre.setString(1, monthSearch);
             ResultSet rs = pre.executeQuery();
-            int col=0;
+            int col = 0;
             switch (term) {
                 case 0:
                     col = 3;
@@ -146,7 +146,11 @@ public class InterestRate {
                     col = 11;
                     break;
             }
-            if (col == 0)return 0;
+            if (term > 12 && term < 18) col = 8;
+            else if (term > 18 && term < 24) col = 9;
+            else if (term > 24 && term < 36) col = 10;
+            else if (term > 36) col = 11;
+            if (col == 0) return 0;
             double rate = 0;
             while (rs.next()) {
                 rate = rs.getDouble(col);

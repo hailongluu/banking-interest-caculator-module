@@ -54,16 +54,16 @@ public class CustomerTest {
         assertEquals(customer, customerAfter);
     }
     
-    @Test
-    public void testDeleteCustomer() {
-        Customer customer = customerDAO.getCustomerByGeneratedId(1);
-        assertNotNull(customer);
-        boolean expectedResult = true;
-        boolean deleteResult1 = savingAccountDAO.deleteSavingAccountByCustomerId(customer.getId());
-        assertEquals(expectedResult, deleteResult1);
-        boolean deleteResult2 = customerDAO.deleteCustomer(customer);
-        assertEquals(expectedResult, deleteResult2);
-        customer = customerDAO.getCustomerByGeneratedId(1);
-        assertNull(customer);
-    }
+//    @Test
+//    public void testDeleteCustomer() {
+//        Customer customer = customerDAO.getCustomerByGeneratedId(1);
+//        assertNotNull(customer);
+//        boolean expectedResult = true;
+//        boolean deleteResult1 = savingAccountDAO.deleteSavingAccountByCustomerId(customer.getId());
+//        assertEquals(expectedResult, deleteResult1);
+//        boolean deleteResult2 = customerDAO.deleteCustomer(customer);
+//        assertEquals(expectedResult, deleteResult2);
+//        customer = customerDAO.getCustomerByGeneratedId(1);
+//        assertNull(customer);
+//    }
 }
