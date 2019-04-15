@@ -105,4 +105,19 @@ public class SavingAccountDAO {
         }
         return null;
     }
+    
+    public boolean deleteSavingAccountByCustomerId(int id) {
+        try {
+            String query = "DELETE FROM savingaccount WHERE idcustomer = ?";
+            PreparedStatement sttm = connection.prepareStatement(query);
+            sttm.setInt(1, id);
+            long rowAffected = sttm.executeUpdate();
+            if (rowAffected > 0)
+                return true;
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

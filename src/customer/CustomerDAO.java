@@ -51,7 +51,7 @@ public class CustomerDAO {
 
     public boolean addCustomer(Customer customer) {
         try {
-            String query = "INSERT INTO customer(id, name, address, idcard, phone) VALUES = (?,?,?,?,?)";
+            String query = "INSERT INTO customer(id, name, address, idcard, phone) VALUES (?,?,?,?,?)";
             PreparedStatement sttm = connection.prepareStatement(query);
             sttm.setInt(1, customer.getId());
             sttm.setString(2, customer.getFullName());
