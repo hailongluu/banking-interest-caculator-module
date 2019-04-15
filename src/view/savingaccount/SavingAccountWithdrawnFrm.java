@@ -222,7 +222,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
             model.addRow(new Object[]{
                 id,
                 savingAccount.getNumber(),
-                savingAccount.getCash(),
+                String.format("%,d",(long)savingAccount.getCash()),
                 DateTimeFomater.convertDateToString(savingAccount.getDate()),
                 savingAccount.getTerm()
             });

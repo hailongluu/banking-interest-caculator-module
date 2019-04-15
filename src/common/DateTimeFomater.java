@@ -18,22 +18,22 @@ public class DateTimeFomater {
     public static void main(String[] args) {
 
 //        System.out.println(DateTimeFomater.getDays("2018-03-25", "2019-04-01"));
-        getEndDate(1);
-        getEndDate(2);
-        getEndDate(3);
-        getEndDate(5);
-        getEndDate(6);
-        getEndDate(8);
-        getEndDate(9);
-        getEndDate(11);
-        getEndDate(12);
-        getEndDate(16);
-        getEndDate(18);
-        getEndDate(20);
-        getEndDate(24);
-        getEndDate(30);
-        getEndDate(36);
-
+//        getEndDate(1);
+//        getEndDate(2);
+//        getEndDate(3);
+//        getEndDate(5);
+//        getEndDate(6);
+//        getEndDate(8);
+//        getEndDate(9);
+//        getEndDate(11);
+//        getEndDate(12);
+//        getEndDate(16);
+//        getEndDate(18);
+//        getEndDate(20);
+//        getEndDate(24);
+//        getEndDate(30);
+//        getEndDate(36);
+        System.out.println(String.format("%,d", 1000000000));
 
 
     }

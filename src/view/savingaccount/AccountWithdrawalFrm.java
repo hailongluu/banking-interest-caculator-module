@@ -48,8 +48,8 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
         lblTerm.setText("" + savingAccount.getTerm());
         lblStartDate.setText(DateTimeFomater.convertDateToString(savingAccount.getDate()));
         lblEndDate.setText(DateTimeFomater.convertDateToString(endDate));
-        lblAmount.setText("" + amount);
-        lblNewAmount.setText("" + newAmount);
+        lblAmount.setText("" + String.format("%,d", (long) amount));
+        lblNewAmount.setText("" + String.format("%,d", (long) newAmount));
     }
 
     /**
@@ -264,12 +264,18 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
         int confirm = JOptionPane.showConfirmDialog(this, "Confirm to withdraw this deposite?");
         System.out.println(confirm);
+
         SavingAccountWithdrawnFrm savingAccountWithdrawnFrm = new SavingAccountWithdrawnFrm();
 
         if (confirm == 0) {
             try {
                 Connection connection = new DBconnection().getConnect();
                 SavingAccountDAO sadao = new SavingAccountDAO(connection);
+                if (sadao.checkIsWithdrawned(savingAccount)){
+                    JOptionPane.showMessageDialog(this, "This deposit has been withdrawned");
+                    this.dispose();
+                    return;
+                }
                 int updatedRows = sadao.updateSavingAccount(savingAccount);
                 if (updatedRows == 1) {
                     JOptionPane.showMessageDialog(this, "Withdraw Successully ");

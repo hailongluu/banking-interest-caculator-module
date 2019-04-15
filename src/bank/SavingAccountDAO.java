@@ -140,4 +140,20 @@ public class SavingAccountDAO {
         }
         return 0;
     }
+
+    public boolean checkIsWithdrawned(SavingAccount savingAccount) {
+        try {
+            String updateSavingAcocunt = "SELECT iswithdrawned FROM savingaccount WHERE (`number` = ?);";
+            PreparedStatement pre = connection.prepareStatement(updateSavingAcocunt);
+            pre.setString(1, savingAccount.getNumber());
+            ResultSet rs = pre.executeQuery();
+            int isWithdrawned = 0;
+            while (rs.next()) {
+                isWithdrawned = rs.getInt(1);
+            }
+            if (isWithdrawned == 1) return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
 }
