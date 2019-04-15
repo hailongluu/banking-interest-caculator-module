@@ -9,9 +9,12 @@ import bank.InterestRate;
 import bank.SavingAccount;
 import bank.SavingAccountDAO;
 import common.BankAccountGenID;
+import connection.DBconnection;
 import customer.Customer;
 import customer.CustomerDAO;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import view.BankMainFrm;
@@ -138,7 +141,11 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
+                try {
+                    btnSearchActionPerformed(evt);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -189,7 +196,11 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
         btnOpen.setText("Open");
         btnOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenActionPerformed(evt);
+                try {
+                    btnOpenActionPerformed(evt);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -316,14 +327,20 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCardIdActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException {//GEN-FIRST:event_btnSearchActionPerformed
         String idCard = txtCardId.getText();
         if (idCard.equals("")) {
             JOptionPane.showMessageDialog(this, "Please enter id number to search");
             return;
         }
-        
-        CustomerDAO customerDAO = new CustomerDAO();
+
+        Connection connection = null;
+        try {
+            connection = new DBconnection().getConnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        CustomerDAO customerDAO = new CustomerDAO(connection);
         Customer customer = customerDAO.getCustomerByIdCard(idCard);
         if (customer == null) {
             JOptionPane.showMessageDialog(this, "Cannot find customer information with given id number");
@@ -357,7 +374,7 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAmountActionPerformed
 
-    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) throws ClassNotFoundException {//GEN-FIRST:event_btnOpenActionPerformed
         String cardId = txtCardId.getText().trim();
         String name = txtName.getText().trim();
         String phone = txtPhone.getText().trim();
@@ -420,8 +437,14 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
         }
         double interestRate =  determineInterestRate(termInt);
         Customer customer = null;
-        CustomerDAO customerDAO = new CustomerDAO();
-        SavingAccountDAO savingAccountDAO = new SavingAccountDAO();
+        Connection connection =null;
+        try {
+             connection = new DBconnection().getConnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        CustomerDAO customerDAO = new CustomerDAO(connection);
+        SavingAccountDAO savingAccountDAO = new SavingAccountDAO(connection);
         BankAccountGenID generator = new BankAccountGenID();
         customer = customerDAO.getCustomerByIdCard(cardId);
         if (customer == null) {
