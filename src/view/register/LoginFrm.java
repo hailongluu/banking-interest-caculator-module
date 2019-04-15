@@ -5,7 +5,11 @@
  */
 package view.register;
 
-import view.savingaccount.*;
+import bank.AccountDAO;
+import common.PasswordHash;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import view.BankMainFrm;
 
 /**
  *
@@ -18,6 +22,43 @@ public class LoginFrm extends javax.swing.JFrame {
      */
     public LoginFrm() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+
+    private void login() {
+        String username = txtUsername.getText();
+        String password = new String(txtPassword.getPassword());
+        if (username.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter your username");
+            return;
+        }
+        if (password.equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter your password");
+            return;
+        }
+        password = PasswordHash.md5Hash(password);
+        AccountDAO accountDAO = new AccountDAO();
+        boolean authenticateResult = accountDAO.authenticateAccount(username, password);
+        if (authenticateResult) {
+            int permission = accountDAO.getPermission(username);
+            changeInterface(permission);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Wrong id or password");
+            return;
+        }
+    }
+
+    private void changeInterface(int permission) {
+        switch (permission) {
+            case 0:
+                BankMainFrm mainFrm = new BankMainFrm();
+                mainFrm.setVisible(true);
+                this.dispose();
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "This account permission is not developed yet");
+        }
     }
 
     /**
@@ -33,11 +74,11 @@ public class LoginFrm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnlSearchCustomer = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtSTK = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtUsername = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        txtSTK6 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,28 +87,38 @@ public class LoginFrm extends javax.swing.JFrame {
 
         jLabel2.setText("Username");
 
-        txtSTK.addActionListener(new java.awt.event.ActionListener() {
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSTKActionPerformed(evt);
+                txtUsernameActionPerformed(evt);
+            }
+        });
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyPressed(evt);
             }
         });
 
-        jButton2.setText("Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
+            }
+        });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginKeyPressed(evt);
             }
         });
 
         jLabel10.setText("________________________________________________________________________________________");
 
-        txtSTK6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSTK6ActionPerformed(evt);
+        jLabel11.setText("Password");
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
-
-        jLabel11.setText("Password");
 
         javax.swing.GroupLayout pnlSearchCustomerLayout = new javax.swing.GroupLayout(pnlSearchCustomer);
         pnlSearchCustomer.setLayout(pnlSearchCustomerLayout);
@@ -80,7 +131,7 @@ public class LoginFrm extends javax.swing.JFrame {
                         .addComponent(jLabel10))
                     .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
                         .addGap(299, 299, 299)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchCustomerLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -88,28 +139,25 @@ public class LoginFrm extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSTK6, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                    .addComponent(txtPassword))
                 .addGap(203, 203, 203))
         );
-
-        pnlSearchCustomerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtSTK, txtSTK6});
-
         pnlSearchCustomerLayout.setVerticalGroup(
             pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
                 .addComponent(jLabel10)
                 .addGap(146, 146, 146)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSTK6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
         );
 
@@ -130,23 +178,37 @@ public class LoginFrm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSTKActionPerformed
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSTKActionPerformed
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        login();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void txtSTK6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSTK6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSTK6ActionPerformed
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
+        int key = evt.getKeyCode();
+        if (key == 10)
+            login();
+    }//GEN-LAST:event_btnLoginKeyPressed
+
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
+        int key = evt.getKeyCode();
+        if (key == 10)
+            login();
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        int key = evt.getKeyCode();
+        if (key == 10)
+            login();
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments
@@ -155,7 +217,7 @@ public class LoginFrm extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -187,14 +249,14 @@ public class LoginFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JPanel pnlSearchCustomer;
-    private javax.swing.JTextField txtSTK;
-    private javax.swing.JTextField txtSTK6;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
