@@ -59,6 +59,30 @@ public class SavingAccountDAO {
         }
         return false;
     }
+    
+    public boolean addSavingAccountWithId(SavingAccount account) {
+        DateTimeFomater dtf = new DateTimeFomater();
+
+        try {
+            String addSavingAccount = "INSERT INTO savingaccount (`number`, `cash`, `interestrate`, `term`, `idcustomer`, `kind`, `date`, `iswithdrawned`, `id`) VALUES (?, ?, ?, ?, ?, ?, ?,?,?);";
+            PreparedStatement pre = connection.prepareStatement(addSavingAccount);
+            pre.setString(1, account.getNumber());
+            pre.setDouble(2, account.getCash());
+            pre.setDouble(3, account.getInterestRate());
+            pre.setInt(4, account.getTerm());
+            pre.setInt(5, account.getCustomer().getId());
+            pre.setString(6, account.getKind());
+            pre.setString(7, dtf.convertDateToString(account.getDate()));
+            pre.setInt(8, account.getIsWithdrawned());
+            pre.setInt(9, account.getId());
+
+            pre.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(SavingAccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     public List<SavingAccount> getSavingAccountByIdCard(String idCard) {
         DateTimeFomater dtf = new DateTimeFomater();

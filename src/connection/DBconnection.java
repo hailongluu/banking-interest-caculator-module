@@ -8,7 +8,7 @@ public class DBconnection {
     Connection connect;
     protected void hasDriver() throws ClassNotFoundException{
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             throw new ClassNotFoundException ("Invalid Driver!!Please check this drver....");
         }
@@ -16,8 +16,8 @@ public class DBconnection {
     protected Connection openConnect() throws ClassNotFoundException, SQLException {
         if(connect == null){
             hasDriver();
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost/banking?" +
-                    "user=root&password=111111");
+            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/banking?" +
+                    "user=root&password=");
         }
         return connect;
     }

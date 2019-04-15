@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class InterestRate {
     public double RATE_0_MONTHS;
@@ -25,7 +27,7 @@ public class InterestRate {
     void getRate() {
         try {
             Connection connection = new DBconnection().getConnect();
-            String getRate = "SELECT * FROM banking.customer WHERE id = ? ;";
+            String getRate = "SELECT * FROM interestrate WHERE id = ? ;";
             PreparedStatement pre = connection.prepareStatement(getRate);
             pre.setInt(1, 1);
             ResultSet rs = pre.executeQuery();
@@ -81,5 +83,80 @@ public class InterestRate {
 
     public double getRATE_36_MONTHS() {
         return RATE_36_MONTHS;
+    }
+
+    public double getRateByMonth(int term, Date month) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+
+        String monthSearch = sdf.format(month);
+        try {
+            Connection connection = new DBconnection().getConnect();
+            String getRate = "SELECT * FROM interestrate WHERE date = ? ;";
+            PreparedStatement pre = connection.prepareStatement(getRate);
+            pre.setString(1, monthSearch);
+            ResultSet rs = pre.executeQuery();
+            int col=0;
+            switch (term) {
+                case 0:
+                    col = 3;
+                    break;
+                case 1:
+                    col = 4;
+                    break;
+                case 2:
+                    col = 4;
+                    break;
+                case 3:
+                    col = 5;
+                    break;
+                case 4:
+                    col = 5;
+                    break;
+                case 5:
+                    col = 5;
+                    break;
+                case 6:
+                    col = 6;
+                    break;
+                case 7:
+                    col = 6;
+                    break;
+                case 8:
+                    col = 6;
+                    break;
+                case 9:
+                    col = 7;
+                    break;
+                case 10:
+                    col = 7;
+                    break;
+                case 11:
+                    col = 7;
+                    break;
+                case 12:
+                    col = 8;
+                    break;
+                case 18:
+                    col = 9;
+                    break;
+                case 24:
+                    col = 10;
+                    break;
+                case 36:
+                    col = 11;
+                    break;
+            }
+            if (col == 0)return 0;
+            double rate = 0;
+            while (rs.next()) {
+                rate = rs.getDouble(col);
+            }
+            return rate;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
