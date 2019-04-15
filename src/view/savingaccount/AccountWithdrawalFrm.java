@@ -5,7 +5,17 @@
  */
 package view.savingaccount;
 
+import bank.InterestCaculator;
 import bank.SavingAccount;
+import bank.SavingAccountDAO;
+import common.DateTimeFomater;
+import connection.DBconnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +26,30 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
     /**
      * Creates new form AccountWithdrawalFrm
      */
+    SavingAccount savingAccount;
+
     public AccountWithdrawalFrm(SavingAccount savingAccount) {
+        this.savingAccount = savingAccount;
         initComponents();
+        setLocationRelativeTo(null);
+        init();
+    }
+
+    void init() {
+        InterestCaculator caculator = new InterestCaculator();
+        double amount = savingAccount.getCash();
+        Date endDate = DateTimeFomater.getCurrentDate();
+        double newAmount = amount + caculator.caculateInterest(savingAccount, endDate);
+
+        lblIdNumber.setText(savingAccount.getNumber());
+        lblCustomerName.setText(savingAccount.getCustomer().getFullName());
+        lblAddress.setText(savingAccount.getCustomer().getAddress());
+        lblPhoneNumber.setText(savingAccount.getCustomer().getPhoneNumber());
+        lblTerm.setText("" + savingAccount.getTerm());
+        lblStartDate.setText(DateTimeFomater.convertDateToString(savingAccount.getDate()));
+        lblEndDate.setText(DateTimeFomater.convertDateToString(endDate));
+        lblAmount.setText("" + amount);
+        lblNewAmount.setText("" + newAmount);
     }
 
     /**
@@ -43,15 +75,15 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
         lblPhoneNumber = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         lblTerm = new javax.swing.JLabel();
-        lblDeposite = new javax.swing.JLabel();
+        lblStartDate = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        lblEndDate = new javax.swing.JLabel();
+        lblAmount = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        lblNewAmount = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,15 +114,15 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
 
         lblTerm.setText("jLabel7");
 
-        lblDeposite.setText("jLabel7");
+        lblStartDate.setText("jLabel7");
 
         jLabel15.setText("End Date");
 
         jLabel16.setText("Amount");
 
-        jLabel17.setText("jLabel7");
+        lblEndDate.setText("jLabel7");
 
-        jLabel18.setText("jLabel7");
+        lblAmount.setText("jLabel7");
 
         jButton2.setText("Withdraw");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +140,7 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
 
         jLabel19.setText("Amount at end of term");
 
-        jLabel20.setText("jLabel7");
+        lblNewAmount.setText("jLabel7");
 
         javax.swing.GroupLayout pnlSearchCustomerLayout = new javax.swing.GroupLayout(pnlSearchCustomer);
         pnlSearchCustomer.setLayout(pnlSearchCustomerLayout);
@@ -137,16 +169,16 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
                                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTerm, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblDeposite, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lblEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(pnlSearchCustomerLayout.createSequentialGroup()
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(53, 53, 53)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lblNewAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchCustomerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,19 +218,19 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(lblDeposite))))
+                            .addComponent(lblStartDate))))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel17))
+                    .addComponent(lblEndDate))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel18))
+                    .addComponent(lblAmount))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel20))
+                    .addComponent(lblNewAmount))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(pnlSearchCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -230,16 +262,45 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this, "Confirm to withdraw this deposite?");
+        System.out.println(confirm);
+        SavingAccountWithdrawnFrm savingAccountWithdrawnFrm = new SavingAccountWithdrawnFrm();
+
+        if (confirm == 0) {
+            try {
+                Connection connection = new DBconnection().getConnect();
+                SavingAccountDAO sadao = new SavingAccountDAO(connection);
+                int updatedRows = sadao.updateSavingAccount(savingAccount);
+                if (updatedRows == 1) {
+                    JOptionPane.showMessageDialog(this, "Withdraw Successully ");
+                    this.dispose();
+                    savingAccountWithdrawnFrm.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Withdraw Unsuccessully ");
+                    this.dispose();
+                    savingAccountWithdrawnFrm.setVisible(true);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountWithdrawalFrm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AccountWithdrawalFrm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (confirm == 1) {
+            return;
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        SavingAccountWithdrawnFrm savingAccountWithdrawnFrm = new SavingAccountWithdrawnFrm();
+        savingAccountWithdrawnFrm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -248,21 +309,21 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblAmount;
     private javax.swing.JLabel lblCustomerName;
-    private javax.swing.JLabel lblDeposite;
+    private javax.swing.JLabel lblEndDate;
     private javax.swing.JLabel lblIdNumber;
+    private javax.swing.JLabel lblNewAmount;
     private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblStartDate;
     private javax.swing.JLabel lblTerm;
     private javax.swing.JPanel pnlSearchCustomer;
     // End of variables declaration//GEN-END:variables

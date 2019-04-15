@@ -44,7 +44,7 @@ public class SavingAccountDAO {
             pre.setString(6, account.getKind());
             pre.setString(7, dtf.convertDateToString(account.getDate()));
             pre.setInt(8, account.getIsWithdrawned());
-            pre.setInt(9,account.getId());
+            pre.setInt(9, account.getId());
             pre.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -52,7 +52,7 @@ public class SavingAccountDAO {
         }
         return false;
     }
-    
+
     public boolean addSavingAccountWithId(SavingAccount account) {
         DateTimeFomater dtf = new DateTimeFomater();
 
@@ -81,7 +81,7 @@ public class SavingAccountDAO {
         DateTimeFomater dtf = new DateTimeFomater();
         try {
             List<SavingAccount> listSavingAccounts = new ArrayList<>();
-            String getSavingAccount = "SELECT s.* FROM savingaccount s, customer c WHERE s.idcustomer = c.id and c.idcard = ?;";
+            String getSavingAccount = "SELECT s.* FROM savingaccount s, customer c WHERE s.idcustomer = c.id and c.idcard = ? and s.iswithdrawned = 0;";
             PreparedStatement pre = connection.prepareStatement(getSavingAccount);
             pre.setString(1, idCard);
             ResultSet rs = pre.executeQuery();
@@ -108,7 +108,7 @@ public class SavingAccountDAO {
         DateTimeFomater dtf = new DateTimeFomater();
         try {
             SavingAccount savingAccount = null;
-            String getSavingAccount = "SELECT * FROM savingaccount WHERE number = ?;";
+            String getSavingAccount = "SELECT * FROM savingaccount WHERE number = ? and iswithdrawned = 0;";
             PreparedStatement pre = connection.prepareStatement(getSavingAccount);
             pre.setString(1, number);
             ResultSet rs = pre.executeQuery();
@@ -128,5 +128,16 @@ public class SavingAccountDAO {
             Logger.getLogger(SavingAccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public int updateSavingAccount(SavingAccount savingAccount) {
+        try {
+            String updateSavingAcocunt = "UPDATE savingaccount SET `iswithdrawned` = '1' WHERE (`number` = ?);";
+            PreparedStatement pre = connection.prepareStatement(updateSavingAcocunt);
+            pre.setString(1, savingAccount.getNumber());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+        }
+        return 0;
     }
 }

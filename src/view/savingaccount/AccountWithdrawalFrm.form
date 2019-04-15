@@ -83,18 +83,18 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblAddress" min="-2" pref="192" max="-2" attributes="0"/>
                                       <Component id="lblTerm" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="lblDeposite" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="lblStartDate" min="-2" pref="192" max="-2" attributes="0"/>
                                       <Component id="lblPhoneNumber" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                                       <Component id="lblCustomerName" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                                       <Component id="lblIdNumber" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="jLabel17" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="jLabel18" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="lblEndDate" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="lblAmount" min="-2" pref="192" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel19" min="-2" pref="139" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="jLabel20" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="lblNewAmount" min="-2" pref="192" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -142,24 +142,24 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDeposite" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEndDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAmount" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNewAmount" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="77" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -231,7 +231,7 @@
             <Property name="text" type="java.lang.String" value="jLabel7"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblDeposite">
+        <Component class="javax.swing.JLabel" name="lblStartDate">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel7"/>
           </Properties>
@@ -246,12 +246,12 @@
             <Property name="text" type="java.lang.String" value="Amount"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel17">
+        <Component class="javax.swing.JLabel" name="lblEndDate">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel7"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel18">
+        <Component class="javax.swing.JLabel" name="lblAmount">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel7"/>
           </Properties>
@@ -277,7 +277,7 @@
             <Property name="text" type="java.lang.String" value="Amount at end of term"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel20">
+        <Component class="javax.swing.JLabel" name="lblNewAmount">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel7"/>
           </Properties>

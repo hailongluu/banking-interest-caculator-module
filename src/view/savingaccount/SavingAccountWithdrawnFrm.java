@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import view.BankMainFrm;
 import view.register.*;
 import view.savingaccount.*;
 
@@ -33,7 +34,10 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
     SavingAccountDAO savingAccountDAO;
 
     public SavingAccountWithdrawnFrm() {
+        listAccount = null;
+        customer = null;
         initComponents();
+        setLocationRelativeTo(null);
         init();
         setVisible(true);
     }
@@ -233,10 +237,24 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
     }
     private void btnWithdrawnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWithdrawnActionPerformed
         // TODO add your handling code here:
+
+        if (listAccount == null || listAccount.size() <= 0) {
+            return;
+        }
+
+        int row = tblListAccount.getSelectedRow();
+        SavingAccount savingAccount = listAccount.get(row);
+        AccountWithdrawalFrm accountWithdrawalFrm = new AccountWithdrawalFrm(savingAccount);
+        accountWithdrawalFrm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnWithdrawnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        BankMainFrm frm = new BankMainFrm();
+        frm.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
