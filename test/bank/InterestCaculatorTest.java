@@ -59,7 +59,7 @@ public class InterestCaculatorTest {
      * Test of caculateInterest method, of class InterestCaculator.
      */
     @Test
-    public void testCaculateInterest1() { // in term có ngày dư
+    public void testCaculateInterest1() {
         int rowNum = 1;
         Map<Integer, String> testData;
         testData = interestTestDataCollector.getData(rowNum);
@@ -78,7 +78,7 @@ public class InterestCaculatorTest {
 
     }
     @Test
-    public void testCaculateInterest2() { // in term có ngày dư
+    public void testCaculateInterest2() {
         int rowNum = 2;
         Map<Integer, String> testData;
         testData = interestTestDataCollector.getData(rowNum);
@@ -96,7 +96,7 @@ public class InterestCaculatorTest {
         assertEquals(expResult, result, 0.0);
 
     }@Test
-    public void testCaculateInterest3() { // in term có ngày dư
+    public void testCaculateInterest3() {
         int rowNum = 3;
         Map<Integer, String> testData;
         testData = interestTestDataCollector.getData(rowNum);
@@ -114,7 +114,7 @@ public class InterestCaculatorTest {
         assertEquals(expResult, result, 0.0);
 
     }@Test
-    public void testCaculateInterest4() { // in term có ngày dư
+    public void testCaculateInterest4() {
         int rowNum = 4;
         Map<Integer, String> testData;
         testData = interestTestDataCollector.getData(rowNum);
@@ -132,7 +132,7 @@ public class InterestCaculatorTest {
         assertEquals(expResult, result, 0.0);
 
     }@Test
-    public void testCaculateInterest5() { // in term có ngày dư
+    public void testCaculateInterest5() {
         int rowNum = 5;
         Map<Integer, String> testData;
         testData = interestTestDataCollector.getData(rowNum);
@@ -150,7 +150,7 @@ public class InterestCaculatorTest {
         assertEquals(expResult, result, 0.0);
 
     }@Test
-    public void testCaculateInterest6() { // in term có ngày dư
+    public void testCaculateInterest6() {
         int rowNum = 6;
         Map<Integer, String> testData;
         testData = interestTestDataCollector.getData(rowNum);
@@ -168,7 +168,7 @@ public class InterestCaculatorTest {
         assertEquals(expResult, result, 0.0);
 
     }@Test
-    public void testCaculateInterest7() { // in term có ngày dư
+    public void testCaculateInterest7() {
         int rowNum = 7;
         Map<Integer, String> testData;
         testData = interestTestDataCollector.getData(rowNum);

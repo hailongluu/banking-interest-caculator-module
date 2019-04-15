@@ -30,10 +30,9 @@ public class InterestTestDataCollector {
     }
 
 
-
-    public  Map<Integer, String> getData(int rowNum){
+    public Map<Integer, String> getData(int rowNum) {
         DataFormatter dataFormatter = new DataFormatter();
-        Map<Integer,String> result = new HashMap<>();
+        Map<Integer, String> result = new HashMap<>();
         try {
             XSSFWorkbook workbook = (XSSFWorkbook) XSSFWorkbookFactory.create(new File("./testcase/InterestTestData.xlsx"));
             XSSFSheet sheet = workbook.getSheet("Sheet1");
@@ -54,11 +53,15 @@ public class InterestTestDataCollector {
         return null;
     }
 
-    public void addResult(int rowNum, double result, String pass){
+    public void addResult(int rowNum, double result, String pass) {
         try {
             File fileIn = new File("./testcase/InterestTestData.xlsx");
-//            XSSFWorkbook workbook = (XSSFWorkbook) XSSFWorkbookFactory.create(fileIn);
+            File fileOut = new File("./testcase/InterestTestDataResult.xlsx");
+            if (fileOut.exists()) {
+                fileIn = fileOut;
+            }
             FileInputStream fis = new FileInputStream(fileIn);
+//            XSSFWorkbook workbook = (XSSFWorkbook) XSSFWorkbookFactory.create(fileIn);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             fis.close();
             XSSFSheet sheet = workbook.getSheet("Sheet1");
@@ -67,8 +70,7 @@ public class InterestTestDataCollector {
             Cell passCell = row.createCell(DATA_PASS);
             resultCell.setCellValue(result);
             passCell.setCellValue(pass);
-            File fileOut = new File("./testcase/InterestTestDataResult.xlsx");
-            FileOutputStream out = new FileOutputStream(fileIn);
+            FileOutputStream out = new FileOutputStream(fileOut);
             workbook.write(out);
             out.close();
         } catch (IOException e) {

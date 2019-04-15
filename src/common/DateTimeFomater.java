@@ -18,7 +18,7 @@ public class DateTimeFomater {
 
     public static void main(String[] args) {
 
-        System.out.println(DateTimeFomater.getDays("2018-03-25", "2019-03-20"));
+        System.out.println(DateTimeFomater.getDays("2018-03-25", "2019-04-01"));
     }
     public DateTimeFomater() {
     }
