@@ -98,7 +98,15 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
             new String [] {
                 "id", "number", "cash", "date", "term"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblListAccount);
 
         btnWithdrawn.setText("Details");
