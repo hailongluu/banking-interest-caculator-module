@@ -65,10 +65,17 @@ public class InterestCaculatorTest {
             int rowNum = i;
             Map<Integer, String> testData;
             testData = interestTestDataCollector.getData(rowNum);
-            SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
-            Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
+//            SavingAccount savingAccount = savingAccountDAO.getSavingAccountByAccountNumber(testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER));
             InterestCaculator instance = new InterestCaculator();
+
+            String accountnumber = testData.get(InterestTestDataCollector.DATA_ACCOUNTNUMBER);
+            double cash = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_CASH));
+            double interest = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_INTERESTRATE));
+            int term = Integer.parseInt(testData.get(InterestTestDataCollector.DATA_TERM));
+            Date startDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_STARTDATE));
+            Date endDate = dateTimeFomater.convertStringToDate(testData.get(InterestTestDataCollector.DATA_ENDATE));
             double expResult = Double.parseDouble(testData.get(InterestTestDataCollector.DATA_EXPRESULT));
+            SavingAccount savingAccount = new SavingAccount(accountnumber,cash,interest,term,startDate);
             double result = (long) instance.caculateInterest(savingAccount, endDate);
             String testNote = testData.get(InterestTestDataCollector.DATA_NOTE);
             System.out.println(testNote);

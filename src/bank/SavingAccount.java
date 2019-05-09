@@ -37,6 +37,14 @@ public class SavingAccount {
         this.isWithdrawned = 0;
     }
 
+    public SavingAccount(String number, double cash, double interestRate, int term, Date date) {
+        this.number = number;
+        this.cash = cash;
+        this.interestRate = interestRate;
+        this.term = term;
+        this.date = date;
+    }
+
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }

@@ -19,11 +19,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbookFactory;
 public class InterestTestDataCollector {
     public static final int DATA_STT = 0;
     public static final int DATA_ACCOUNTNUMBER = 1;
-    public static final int DATA_ENDATE = 2;
-    public static final int DATA_EXPRESULT = 3;
-    public static final int DATA_RESULT = 4;
-    public static final int DATA_PASS = 5;
-    public static final int DATA_NOTE = 6;
+    public static final int DATA_CASH = 2;
+    public static final int DATA_INTERESTRATE = 3;
+    public static final int DATA_TERM = 4;
+    public static final int DATA_STARTDATE = 5;
+    public static final int DATA_ENDATE = 6;
+    public static final int DATA_EXPRESULT = 7;
+    public static final int DATA_RESULT = 8;
+    public static final int DATA_PASS = 9;
+    public static final int DATA_NOTE = 10;
 
 
     public InterestTestDataCollector() {
@@ -39,6 +43,11 @@ public class InterestTestDataCollector {
             Row row = sheet.getRow(rowNum);
             result.put(DATA_STT, dataFormatter.formatCellValue(row.getCell(DATA_STT)));
             result.put(DATA_ACCOUNTNUMBER, dataFormatter.formatCellValue(row.getCell(DATA_ACCOUNTNUMBER)));
+            result.put(DATA_CASH, dataFormatter.formatCellValue(row.getCell(DATA_CASH)));
+            result.put(DATA_INTERESTRATE, dataFormatter.formatCellValue(row.getCell(DATA_INTERESTRATE)));
+            result.put(DATA_TERM, dataFormatter.formatCellValue(row.getCell(DATA_TERM)));
+            result.put(DATA_STARTDATE, dataFormatter.formatCellValue(row.getCell(DATA_STARTDATE)));
+
             result.put(DATA_ENDATE, dataFormatter.formatCellValue(row.getCell(DATA_ENDATE)));
             result.put(DATA_EXPRESULT, dataFormatter.formatCellValue(row.getCell(DATA_EXPRESULT)));
             result.put(DATA_RESULT, dataFormatter.formatCellValue(row.getCell(DATA_RESULT)));
