@@ -53,7 +53,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Account Seaching"/>
+        <Property name="text" type="java.lang.String" value="Account Searching"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="pnlSearchCustomer">
