@@ -76,7 +76,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Account Seaching");
+        jLabel1.setText("Account Searching");
 
         jLabel2.setText("Please enter ID Card");
 
@@ -203,7 +203,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         if (txtIDCard.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Nhập vào TD card của Khách hàng");
+            JOptionPane.showMessageDialog(this, "Please enter the ID card number");
             return;
         }
         String idCard = txtIDCard.getText();
