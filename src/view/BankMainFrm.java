@@ -19,6 +19,7 @@ public class BankMainFrm extends javax.swing.JFrame {
      */
     
     public BankMainFrm() {
+        setTitle("Main Menu");
         initComponents();
         setLocationRelativeTo(null);
     }

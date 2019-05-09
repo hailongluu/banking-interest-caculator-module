@@ -21,6 +21,7 @@ public class LoginFrm extends javax.swing.JFrame {
      * Creates new form SavingAccoutRegister
      */
     public LoginFrm() {
+        setTitle("Login Interface");
         initComponents();
         setLocationRelativeTo(null);
     }

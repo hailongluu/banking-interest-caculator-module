@@ -30,6 +30,7 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
      */
     
     public SavingAccountRegisterFrm() {
+        setTitle("Saving Account Registration Interface");
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -446,17 +447,25 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
         CustomerDAO customerDAO = new CustomerDAO(connection);
         SavingAccountDAO savingAccountDAO = new SavingAccountDAO(connection);
         BankAccountGenID generator = new BankAccountGenID();
-        customer = customerDAO.getCustomerByIdCard(cardId);
-        if (customer == null) {
-            customer = new Customer(generator.getNewCustomerId(), name, address, phone, cardId);
+        customer = new Customer(generator.getNewCustomerId(), name, address, phone, cardId);
+        Customer customerDb = customerDAO.getCustomerByIdCard(cardId);
+        if (customerDb == null)
             customerDAO.addCustomer(customer);
-        }
-        SavingAccount savingAccount = new SavingAccount(generator.getNewSavingAccountId(), amountDouble, interestRate, termInt, "Deposite", customer, new Date());
-        boolean isSuccess = savingAccountDAO.addSavingAccountWithId(savingAccount);
-        if (isSuccess)
-            JOptionPane.showMessageDialog(this, "Saving account is successfully created");
         else
-            JOptionPane.showMessageDialog(this, "Error occured with database");
+            customer.setId(customerDb.getId());
+        if (!customerDb.equals(customer)) {
+            JOptionPane.showMessageDialog(this, "Customer info has been customized. Please check again");
+            return;
+        }
+        int choice = JOptionPane.showConfirmDialog(this, "Do you want to create saving account with given information?");
+        if (choice == 0) {
+            SavingAccount savingAccount = new SavingAccount(generator.getNewSavingAccountId(), amountDouble, interestRate, termInt, "Deposite", customer, new Date());
+            boolean isSuccess = savingAccountDAO.addSavingAccountWithId(savingAccount);
+            if (isSuccess)
+                JOptionPane.showMessageDialog(this, "Saving account is successfully created");
+            else
+                JOptionPane.showMessageDialog(this, "Error occured with database");
+        }
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
