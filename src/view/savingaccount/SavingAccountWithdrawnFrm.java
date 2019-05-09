@@ -76,7 +76,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Account Search Interface");
+        jLabel1.setText("Account Seaching");
 
         jLabel2.setText("Please enter ID Card");
 
@@ -100,11 +100,11 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "number", "cash", "date", "term"
+                "Deposite ID", "Customer", "Term deposite", "Deposite amount", "Interest rate ", "Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -178,10 +178,10 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlSearchCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(259, 259, 259))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,12 +219,14 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
             model.removeRow(0);
         }
         for (SavingAccount savingAccount : listAccount) {
-            model.addRow(new Object[]{
-                id,
+            model.addRow(new Object[]{              
                 savingAccount.getNumber(),
+                savingAccount.getCustomer().getFullName(),
+                savingAccount.getTerm(),
                 String.format("%,d",(long)savingAccount.getCash()),
+                savingAccount.getInterestRate(),
                 DateTimeFomater.convertDateToString(savingAccount.getDate()),
-                savingAccount.getTerm()
+                
             });
             id++;
         }

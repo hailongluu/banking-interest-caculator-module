@@ -5,17 +5,13 @@
  */
 package bank;
 
-import connection.DBconnection;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
 
 /**
  * @author hailongluu
  */
+
+
 public class InterestCaculator {
     public double caculateInterest(SavingAccount savingAccount, Date endDate){
         InterestRate interestRate = new InterestRate();

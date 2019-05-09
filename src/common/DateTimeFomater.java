@@ -33,8 +33,8 @@ public class DateTimeFomater {
 //        getEndDate(24);
 //        getEndDate(30);
 //        getEndDate(36);
-        System.out.println(String.format("%,d", 1000000000));
-
+//        System.out.println(String.format("%,d", 1000000000));
+        System.out.println(getDays("2018-03-01","2019-04-16"));
 
     }
 
