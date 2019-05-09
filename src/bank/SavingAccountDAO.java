@@ -55,7 +55,6 @@ public class SavingAccountDAO {
 
     public boolean addSavingAccountWithId(SavingAccount account) {
         DateTimeFomater dtf = new DateTimeFomater();
-
         try {
             String addSavingAccount = "INSERT INTO savingaccount (`number`, `cash`, `interestrate`, `term`, `idcustomer`, `kind`, `date`, `iswithdrawned`, `id`) VALUES (?, ?, ?, ?, ?, ?, ?,?,?);";
             PreparedStatement pre = connection.prepareStatement(addSavingAccount);

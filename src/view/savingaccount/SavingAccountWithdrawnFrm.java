@@ -34,6 +34,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
     SavingAccountDAO savingAccountDAO;
 
     public SavingAccountWithdrawnFrm() {
+        setTitle("Account Search Interface");
         listAccount = null;
         customer = null;
         initComponents();
@@ -76,7 +77,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Account Searching");
+        jLabel1.setText("Account Search Interface");
 
         jLabel2.setText("Please enter ID Card");
 
@@ -178,10 +179,10 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlSearchCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(206, 206, 206)
                 .addComponent(jLabel1)
-                .addGap(259, 259, 259))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
