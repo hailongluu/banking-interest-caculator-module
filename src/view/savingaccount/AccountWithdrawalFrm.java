@@ -30,6 +30,7 @@ public class AccountWithdrawalFrm extends javax.swing.JFrame {
 
     public AccountWithdrawalFrm(SavingAccount savingAccount) {
         setTitle("Account Detail Interface");
+        setResizable(false);
         this.savingAccount = savingAccount;
         initComponents();
         setLocationRelativeTo(null);

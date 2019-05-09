@@ -35,6 +35,7 @@ public class SavingAccountWithdrawnFrm extends javax.swing.JFrame {
 
     public SavingAccountWithdrawnFrm() {
         setTitle("Account Search Interface");
+        setResizable(false);
         listAccount = null;
         customer = null;
         initComponents();

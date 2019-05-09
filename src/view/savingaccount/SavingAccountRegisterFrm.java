@@ -31,6 +31,7 @@ public class SavingAccountRegisterFrm extends javax.swing.JFrame {
     
     public SavingAccountRegisterFrm() {
         setTitle("Saving Account Registration Interface");
+        setResizable(false);
         initComponents();
         setLocationRelativeTo(null);
     }

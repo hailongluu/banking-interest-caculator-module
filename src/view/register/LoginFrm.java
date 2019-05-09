@@ -22,6 +22,7 @@ public class LoginFrm extends javax.swing.JFrame {
      */
     public LoginFrm() {
         setTitle("Login Interface");
+        setResizable(false);
         initComponents();
         setLocationRelativeTo(null);
     }
